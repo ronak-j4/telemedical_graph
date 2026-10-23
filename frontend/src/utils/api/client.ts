@@ -24,7 +24,7 @@ export function friendlyMessage(error: unknown, subject = 'this data'): string |
     if (error.status === 404) return `${capitalise(subject)} is not available from the backend at this route.`;
     if (error.status === 400) return 'The server rejected the request. Please review the values and try again.';
     if (error.status === 409) return 'That change conflicts with existing records and was not saved.';
-    if (error.status === 503) return 'Healthcare Graph is unavailable. Check that Neo4j is running and the backend is configured for it.';
+    if (error.status === 503) return error.message || 'Healthcare Graph is unavailable. Check that Neo4j is running and the backend is configured for it.';
   }
   return `Unable to load ${subject}. Please try again.`;
 }

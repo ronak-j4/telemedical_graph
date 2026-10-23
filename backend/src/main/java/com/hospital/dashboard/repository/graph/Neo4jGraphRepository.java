@@ -14,9 +14,13 @@ import org.neo4j.driver.Result;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.SessionConfig;
 import org.neo4j.driver.Value;
+import org.neo4j.driver.exceptions.AuthenticationException;
 import org.neo4j.driver.exceptions.Neo4jException;
+import org.neo4j.driver.exceptions.ServiceUnavailableException;
 import org.neo4j.driver.types.Node;
 import org.neo4j.driver.types.Relationship;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +36,8 @@ import java.util.function.Function;
  */
 @Repository
 public class Neo4jGraphRepository {
+
+    private static final Logger log = LoggerFactory.getLogger(Neo4jGraphRepository.class);
 
     private final ObjectProvider<Driver> driverProvider;
     private final String database;
@@ -167,8 +173,15 @@ public class Neo4jGraphRepository {
         }
         try (Session session = driver.session(SessionConfig.forDatabase(database))) {
             return work.apply(session);
+        } catch (AuthenticationException ex) {
+            log.warn("Neo4j authentication failed for configured user and database '{}'.", database);
+            throw new GraphUnavailableException("Neo4j rejected the configured username or password.", ex);
+        } catch (ServiceUnavailableException ex) {
+            log.warn("Neo4j server is unreachable at the configured URI for database '{}'.", database);
+            throw new GraphUnavailableException("Neo4j is not reachable at the configured URI.", ex);
         } catch (Neo4jException | IllegalStateException ex) {
-            throw new GraphUnavailableException("Healthcare Graph is unavailable. Verify that Neo4j is running and its credentials are valid.", ex);
+            log.warn("Neo4j graph query failed for database '{}': {}", database, ex.getMessage(), ex);
+            throw new GraphUnavailableException("Neo4j rejected the graph request. Verify its database name and configuration.", ex);
         }
     }
 
