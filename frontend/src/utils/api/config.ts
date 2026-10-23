@@ -62,5 +62,12 @@ export const endpoints = {
   payments: {
     base: '/payments',
     one: (key: string | number) => `/payments/${id(key)}`
+  },
+  graph: {
+    doctors: '/graph/doctors',
+    patientJourney: (key: string | number) => `/graph/patients/${id(key)}/journey`,
+    referrals: (key: string | number) => `/graph/referrals/${id(key)}`,
+    referralPath: '/graph/referrals/path',
+    visualization: '/graph/visualization'
   }
 } as const;

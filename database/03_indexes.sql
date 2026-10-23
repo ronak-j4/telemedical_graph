@@ -1,5 +1,3 @@
--- Primary keys and unique constraints already create their own indexes.
--- These indexes support foreign-key joins and common dashboard filters.
 
 CREATE INDEX idx_feedback_patient ON feedback (patient_id);
 CREATE INDEX idx_medical_record_patient ON medical_record (patient_id);

@@ -1,5 +1,3 @@
--- Hospital Management Dashboard: DA2 Oracle schema
--- This file creates exactly the 19 required tables. Constraints are added in 02_constraints.sql.
 
 CREATE TABLE patient (
     patient_id NUMBER,

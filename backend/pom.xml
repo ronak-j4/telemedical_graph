@@ -40,6 +40,14 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!-- Dedicated Bolt driver for the optional Neo4j graph feature. The
+             existing Oracle/JdbcTemplate persistence layer remains unchanged. -->
+        <dependency>
+            <groupId>org.neo4j.driver</groupId>
+            <artifactId>neo4j-java-driver</artifactId>
+            <version>6.1.0</version>
+        </dependency>
+
         <!-- Oracle JDBC driver -->
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>

@@ -1,4 +1,3 @@
--- Primary, foreign, unique, NOT NULL, and CHECK constraints for the 19-table schema.
 
 ALTER TABLE patient ADD CONSTRAINT pk_patient PRIMARY KEY (patient_id);
 ALTER TABLE patient MODIFY (first_name CONSTRAINT nn_patient_first_name NOT NULL,

@@ -11,6 +11,7 @@ import { PrescriptionsPage } from './pages/Prescriptions';
 import { MedicinesPage } from './pages/Medicines';
 import { TestsPage } from './pages/Tests';
 import { PaymentsPage } from './pages/Payments';
+import { HealthcareGraphPage } from './pages/HealthcareGraph';
 
 export function App() {
   return (
@@ -26,6 +27,7 @@ export function App() {
           <Route path="/medicines" element={<MedicinesPage />} />
           <Route path="/tests" element={<TestsPage />} />
           <Route path="/payments" element={<PaymentsPage />} />
+          <Route path="/healthcare-graph" element={<HealthcareGraphPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

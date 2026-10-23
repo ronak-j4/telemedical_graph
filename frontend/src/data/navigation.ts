@@ -5,6 +5,7 @@ import {
   FileTextIcon,
   FlaskConicalIcon,
   LayoutDashboardIcon,
+  NetworkIcon,
   PillIcon,
   StethoscopeIcon,
   UsersIcon } from
@@ -52,6 +53,12 @@ export const navGroups: NavGroup[] = [
   { to: '/medicines', label: 'Medicines', icon: PillIcon, subtitle: 'Formulary of drugs, tablets, syrups and injections' },
   { to: '/tests', label: 'Tests', icon: FlaskConicalIcon, subtitle: 'Diagnostic test catalogue' },
   { to: '/payments', label: 'Payments', icon: CreditCardIcon, subtitle: 'Consultation billing and settlement records' }]
+
+},
+{
+  label: 'Graph insights',
+  items: [
+  { to: '/healthcare-graph', label: 'Healthcare Graph', icon: NetworkIcon, subtitle: 'Neo4j doctor discovery, care journeys and referral paths' }]
 
 }];
 
