@@ -6,10 +6,6 @@ relationship-oriented features. The existing relational workflows remain
 available; Neo4j adds doctor discovery, patient care journeys, referral
 exploration, and an interactive graph view.
 
-> **Important:** Oracle is the source of truth for the original application
-> records. Neo4j is an intentionally small graph projection for this prototype;
-> it does not replace, migrate, or automatically synchronize the Oracle data.
-
 ## What the application provides
 
 - Existing telemedicine management screens for patients, doctors, hospitals,
